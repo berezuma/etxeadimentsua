@@ -128,6 +128,11 @@
   .challenge-text{font-size:.95rem;line-height:1.7;opacity:.9}
   .breadcrumb{font-size:.8rem;color:var(--text-light);margin-bottom:20px}
   .breadcrumb span{color:var(--gold)}
+
+  /* ANIMATIONS */
+  .anim-box{background:linear-gradient(135deg,#0d1117,#162030);border:2px solid var(--gold);border-radius:8px;padding:20px;margin:20px 0;overflow:hidden}
+  .anim-title{color:var(--gold-light);font-family:'Courier Prime',monospace;font-size:.85rem;margin-bottom:16px;letter-spacing:2px;text-transform:uppercase;text-align:center}
+  .anim-box svg{display:block;margin:0 auto;max-width:100%}
   .overview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin:20px 0}
   .overview-card{background:var(--parchment);border:1px solid var(--border);padding:16px;border-radius:4px;text-align:center}
   .overview-icon{font-size:2rem;margin-bottom:8px}
@@ -737,6 +742,12 @@ function showProjectDetail(idx){
       </div>
       <p class="intro-text">${p.intro}</p>
 
+      <h2 class="section-title">🎬 Nola Funtzionatzen Du?</h2>
+      <div class="anim-box">
+        <div class="anim-title">⚡ animazioa — ${p.title.toUpperCase()}</div>
+        ${renderAnimation(p.id)}
+      </div>
+
       <h2 class="section-title">🔧 Beharrezko Osagaiak</h2>
       <table class="comp-table">
         <thead><tr><th>Osagaia</th><th>Funtzioa</th><th>Konexioa</th><th>Kop.</th></tr></thead>
@@ -783,6 +794,227 @@ function showProjectDetail(idx){
       </div>
     </div>
   `;
+}
+
+function renderAnimation(id){
+  const mkr='<defs><marker id="afl" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#ffcc44"/></marker></defs>';
+  const anims={
+    0:`<svg viewBox="0 0 420 160">
+      ${mkr}
+      <text x="50" y="15" text-anchor="middle" fill="#e2e8f0" font-family="'Courier Prime',monospace" font-size="10" font-weight="bold">SENTSOREA</text>
+      <text x="320" y="15" text-anchor="middle" fill="#e2e8f0" font-family="'Courier Prime',monospace" font-size="10" font-weight="bold">PANTAILA</text>
+      <circle cx="50" cy="45" r="12" fill="#ffdd00" opacity=".7"><animate attributeName="opacity" values=".4;.9;.4" dur="4s" repeatCount="indefinite"/></circle>
+      <rect x="35" y="55" width="10" height="60" rx="5" fill="none" stroke="#94a3b8" stroke-width="1"/>
+      <circle cx="40" cy="118" r="7" fill="#ff4444"/>
+      <rect x="37" y="85" width="6" rx="3" fill="#ff4444"><animate attributeName="y" values="95;68;95" dur="6s" repeatCount="indefinite"/><animate attributeName="height" values="28;53;28" dur="6s" repeatCount="indefinite"/></rect>
+      <text x="52" y="65" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="7">30°</text>
+      <text x="52" y="95" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="7">20°</text>
+      <text x="40" y="140" text-anchor="middle" fill="#44ff88" font-family="'Courier Prime',monospace" font-size="8">DHT11</text>
+      <line x1="75" y1="90" x2="135" y2="90" stroke="#ffcc44" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#afl)"><animate attributeName="stroke-dashoffset" values="0;-14" dur="1s" repeatCount="indefinite"/></line>
+      <text x="105" y="85" text-anchor="middle" fill="#ffcc44" font-family="'Courier Prime',monospace" font-size="7">datuak</text>
+      <rect x="140" y="72" width="55" height="40" rx="4" fill="#006680" stroke="#00979d" stroke-width="1.5"/>
+      <text x="167" y="90" text-anchor="middle" fill="#7dd3fc" font-family="'Courier Prime',monospace" font-size="8" font-weight="bold">ARDUINO</text>
+      <text x="167" y="103" text-anchor="middle" fill="#00ff88" font-family="'Courier Prime',monospace" font-size="7">UNO</text>
+      <line x1="200" y1="90" x2="252" y2="90" stroke="#4499ff" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#afl)"><animate attributeName="stroke-dashoffset" values="0;-14" dur="1s" repeatCount="indefinite"/></line>
+      <text x="226" y="85" text-anchor="middle" fill="#4499ff" font-family="'Courier Prime',monospace" font-size="7">I2C</text>
+      <rect x="257" y="50" width="130" height="65" rx="4" fill="#0a1a3a" stroke="#4499ff" stroke-width="1.5"/>
+      <rect x="267" y="60" width="110" height="45" rx="2" fill="#001830"/>
+      <text x="322" y="78" text-anchor="middle" fill="#00ccff" font-family="'Courier Prime',monospace" font-size="10"><tspan>Tenp: </tspan><tspan fill="#00ff88">23</tspan><tspan>°C</tspan><animate attributeName="opacity" values="1;1;0;0;1" dur="6s" repeatCount="indefinite"/></text>
+      <text x="322" y="78" text-anchor="middle" fill="#00ccff" font-family="'Courier Prime',monospace" font-size="10" opacity="0"><tspan>Tenp: </tspan><tspan fill="#ff6666">27</tspan><tspan>°C</tspan><animate attributeName="opacity" values="0;0;1;1;0" dur="6s" repeatCount="indefinite"/></text>
+      <text x="322" y="96" text-anchor="middle" fill="#00ccff" font-family="'Courier Prime',monospace" font-size="10"><tspan>Heze: </tspan><tspan fill="#00ff88">45</tspan><tspan>%</tspan><animate attributeName="opacity" values="1;1;0;0;1" dur="6s" repeatCount="indefinite"/></text>
+      <text x="322" y="96" text-anchor="middle" fill="#00ccff" font-family="'Courier Prime',monospace" font-size="10" opacity="0"><tspan>Heze: </tspan><tspan fill="#ff6666">72</tspan><tspan>%</tspan><animate attributeName="opacity" values="0;0;1;1;0" dur="6s" repeatCount="indefinite"/></text>
+      <rect x="370" y="88" width="3" height="8" fill="#00ccff"><animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/></rect>
+      <text x="322" y="130" text-anchor="middle" fill="#4499ff" font-family="'Courier Prime',monospace" font-size="8">LCD 16×2 I2C</text>
+    </svg>`,
+
+    1:`<svg viewBox="0 0 420 160">
+      <rect x="0" y="0" width="420" height="120" fill="#001833"><animate attributeName="fill" values="#4488cc;#001833;#001833;#4488cc;#4488cc" dur="8s" repeatCount="indefinite"/></rect>
+      <rect x="0" y="120" width="420" height="40" fill="#1a2a0a"/>
+      <circle cx="60" r="20" fill="#ffdd00"><animate attributeName="cy" values="35;110;110;35;35" dur="8s" repeatCount="indefinite"/><animate attributeName="fill" values="#ffdd00;#ff6600;#ff6600;#ffdd00;#ffdd00" dur="8s" repeatCount="indefinite"/><animate attributeName="r" values="20;12;12;20;20" dur="8s" repeatCount="indefinite"/></circle>
+      <circle cx="150" cy="25" r="1.5" fill="white"><animate attributeName="opacity" values="0;1;1;0;0" dur="8s" repeatCount="indefinite"/></circle>
+      <circle cx="250" cy="40" r="1" fill="white"><animate attributeName="opacity" values="0;1;1;0;0" dur="8s" repeatCount="indefinite"/></circle>
+      <circle cx="350" cy="20" r="1.5" fill="white"><animate attributeName="opacity" values="0;1;1;0;0" dur="8s" repeatCount="indefinite"/></circle>
+      <polygon points="180,120 180,70 240,40 300,70 300,120" fill="#1a1208" stroke="#333" stroke-width="1"/>
+      <rect x="195" y="80" width="20" height="20" fill="#331a00" stroke="#555" stroke-width="0.5"><animate attributeName="fill" values="#331a00;#ffcc00;#ffcc00;#331a00;#331a00" dur="8s" repeatCount="indefinite"/></rect>
+      <rect x="230" y="80" width="20" height="20" fill="#331a00" stroke="#555" stroke-width="0.5"><animate attributeName="fill" values="#331a00;#ffcc00;#ffcc00;#331a00;#331a00" dur="8s" repeatCount="indefinite"/></rect>
+      <rect x="265" y="80" width="20" height="20" fill="#331a00" stroke="#555" stroke-width="0.5"><animate attributeName="fill" values="#331a00;#ffcc00;#ffcc00;#331a00;#331a00" dur="8s" repeatCount="indefinite"/></rect>
+      <rect x="195" y="100" width="20" height="20" fill="#ffcc00" opacity="0"><animate attributeName="opacity" values="0;.3;.3;0;0" dur="8s" repeatCount="indefinite"/></rect>
+      <rect x="230" y="100" width="20" height="20" fill="#ffcc00" opacity="0"><animate attributeName="opacity" values="0;.3;.3;0;0" dur="8s" repeatCount="indefinite"/></rect>
+      <rect x="265" y="100" width="20" height="20" fill="#ffcc00" opacity="0"><animate attributeName="opacity" values="0;.3;.3;0;0" dur="8s" repeatCount="indefinite"/></rect>
+      <circle cx="160" cy="130" r="6" fill="#443300" stroke="#ffcc44" stroke-width="1"><animate attributeName="fill" values="#886600;#221100;#221100;#886600;#886600" dur="8s" repeatCount="indefinite"/></circle>
+      <text x="160" y="148" text-anchor="middle" fill="#ffcc44" font-family="'Courier Prime',monospace" font-size="7">LDR</text>
+      <text x="60" y="145" text-anchor="middle" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="8"><animate attributeName="fill" values="#ffcc44;#6688aa;#6688aa;#ffcc44;#ffcc44" dur="8s" repeatCount="indefinite"/>☀ EGUN → 🌙 GAU</text>
+      <text x="320" y="145" text-anchor="middle" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="8">LED × 3</text>
+      <text x="240" y="155" text-anchor="middle" fill="#00ff88" font-family="'Courier Prime',monospace" font-size="9" font-weight="bold"><animate attributeName="opacity" values="0;1;1;0;0" dur="8s" repeatCount="indefinite"/>Iluna → Argiak PIZTU</text>
+      <text x="240" y="155" text-anchor="middle" fill="#ffcc44" font-family="'Courier Prime',monospace" font-size="9" font-weight="bold" opacity="1"><animate attributeName="opacity" values="1;0;0;1;1" dur="8s" repeatCount="indefinite"/>Argia → Argiak ITZALI</text>
+    </svg>`,
+
+    2:`<svg viewBox="0 0 420 160">
+      ${mkr}
+      <rect x="40" y="40" width="60" height="80" rx="4" fill="#1a0a2a" stroke="#E91E63" stroke-width="1.5"/>
+      <text x="70" y="65" text-anchor="middle" fill="#E91E63" font-family="'Courier Prime',monospace" font-size="9" font-weight="bold">RFID</text>
+      <text x="70" y="78" text-anchor="middle" fill="#ff88aa" font-family="'Courier Prime',monospace" font-size="7">RC522</text>
+      <circle cx="70" cy="95" r="3" fill="none" stroke="#E91E63" opacity="0"><animate attributeName="r" values="3;15" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".6;0" dur="2s" repeatCount="indefinite"/></circle>
+      <rect y="85" width="40" height="25" rx="3" fill="#4499ff" stroke="#88bbff" stroke-width="1"><animate attributeName="x" values="170;105;105;170" dur="6s" repeatCount="indefinite"/></rect>
+      <text y="101" fill="white" font-family="'Courier Prime',monospace" font-size="7" font-weight="bold"><animate attributeName="x" values="178;113;113;178" dur="6s" repeatCount="indefinite"/>TXARTEL</text>
+      <circle cx="190" cy="60" r="8" fill="#003300"><animate attributeName="fill" values="#003300;#00ff00;#00ff00;#003300" dur="6s" repeatCount="indefinite"/></circle>
+      <text x="190" y="80" text-anchor="middle" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="7"><animate attributeName="fill" values="#94a3b8;#00ff00;#00ff00;#94a3b8" dur="6s" repeatCount="indefinite"/>EGOERA</text>
+      <line x1="210" y1="60" x2="250" y2="60" stroke="#ffcc44" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#afl)"/>
+      <rect x="260" y="30" width="80" height="110" rx="2" fill="none" stroke="#8B7355" stroke-width="2"/>
+      <rect x="260" y="30" height="110" rx="1" fill="#5c3d1e" stroke="#8B7355" stroke-width="1"><animate attributeName="width" values="78;15;15;78" dur="6s" repeatCount="indefinite"/></rect>
+      <circle cy="90" r="3" fill="#ffcc44"><animate attributeName="cx" values="330;272;272;330" dur="6s" repeatCount="indefinite"/></circle>
+      <text x="300" y="155" text-anchor="middle" fill="#4CAF50" font-family="'Courier Prime',monospace" font-size="8">Servo → 0° / 90°</text>
+      <text x="390" y="70" fill="#00ff00" font-family="'Courier Prime',monospace" font-size="9" font-weight="bold" opacity="0"><animate attributeName="opacity" values="0;1;1;0" dur="6s" repeatCount="indefinite"/>IREKITA</text>
+      <text x="390" y="70" fill="#ff4444" font-family="'Courier Prime',monospace" font-size="9" font-weight="bold" opacity="1"><animate attributeName="opacity" values="1;0;0;1" dur="6s" repeatCount="indefinite"/>ITXITA</text>
+      <text x="70" y="135" text-anchor="middle" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="7">UID: A1 B2 C3 D4</text>
+    </svg>`,
+
+    3:`<svg viewBox="0 0 420 160">
+      <rect x="30" y="50" width="50" height="35" rx="15" fill="#1a2a1a" stroke="#44ff88" stroke-width="1.5"/>
+      <text x="55" y="72" text-anchor="middle" fill="#44ff88" font-family="'Courier Prime',monospace" font-size="8" font-weight="bold">PIR</text>
+      <polygon points="80,55 200,20 200,100 80,80" fill="#44ff88" opacity="0"><animate attributeName="opacity" values="0;0;.15;.15;0;0" dur="6s" repeatCount="indefinite"/></polygon>
+      <g>
+        <circle r="8" fill="#e2e8f0"><animate attributeName="cx" values="220;140;140;220;220" dur="6s" repeatCount="indefinite"/><animate attributeName="cy" values="40;40;40;40;40" dur="6s" repeatCount="indefinite"/></circle>
+        <line y1="48" y2="78" stroke="#e2e8f0" stroke-width="2"><animate attributeName="x1" values="220;140;140;220;220" dur="6s" repeatCount="indefinite"/><animate attributeName="x2" values="220;140;140;220;220" dur="6s" repeatCount="indefinite"/></line>
+        <line y1="78" y2="100" stroke="#e2e8f0" stroke-width="2"><animate attributeName="x1" values="220;140;140;220;220" dur="6s" repeatCount="indefinite"/><animate attributeName="x2" values="212;132;132;212;212" dur="6s" repeatCount="indefinite"/></line>
+        <line y1="78" y2="100" stroke="#e2e8f0" stroke-width="2"><animate attributeName="x1" values="220;140;140;220;220" dur="6s" repeatCount="indefinite"/><animate attributeName="x2" values="228;148;148;228;228" dur="6s" repeatCount="indefinite"/></line>
+      </g>
+      <text y="115" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="8" text-anchor="middle"><animate attributeName="x" values="220;140;140;220;220" dur="6s" repeatCount="indefinite"/>pertsona</text>
+      <circle cx="310" cy="40" r="12" fill="#330000"><animate attributeName="fill" values="#330000;#330000;#ff0000;#ff0000;#330000;#330000" dur="6s" repeatCount="indefinite"/></circle>
+      <circle cx="310" cy="40" r="18" fill="#ff0000" opacity="0"><animate attributeName="opacity" values="0;0;.4;.4;0;0" dur="6s" repeatCount="indefinite"/></circle>
+      <text x="310" y="44" text-anchor="middle" fill="white" font-family="'Courier Prime',monospace" font-size="7">LED</text>
+      <rect x="285" y="70" width="50" height="30" rx="4" fill="#2a2a0a" stroke="#ffcc44" stroke-width="1"><animate attributeName="stroke" values="#ffcc44;#ffcc44;#ff4444;#ff4444;#ffcc44;#ffcc44" dur="6s" repeatCount="indefinite"/></rect>
+      <text x="310" y="89" text-anchor="middle" fill="#ffcc44" font-family="'Courier Prime',monospace" font-size="8">BUZZER</text>
+      <circle cx="345" cy="85" r="5" fill="none" stroke="#ff4444" stroke-width="1" opacity="0"><animate attributeName="r" values="5;25" dur="0.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;.6;0;0;0" dur="6s" repeatCount="indefinite"/></circle>
+      <circle cx="345" cy="85" r="10" fill="none" stroke="#ff4444" stroke-width="1" opacity="0"><animate attributeName="r" values="10;30" dur="0.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;.3;0;0;0" dur="6s" repeatCount="indefinite"/></circle>
+      <circle cx="310" cy="120" r="6" fill="#00ff00" opacity=".8"><animate attributeName="opacity" values=".8;.8;.3;.3;.8;.8" dur="6s" repeatCount="indefinite"/></circle>
+      <text x="310" y="140" text-anchor="middle" fill="#00ff88" font-family="'Courier Prime',monospace" font-size="7">AKTIBO</text>
+      <text x="310" y="155" text-anchor="middle" fill="#ff4444" font-family="'Courier Prime',monospace" font-size="9" font-weight="bold" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" dur="6s" repeatCount="indefinite"/>⚠ MUGIMENDUA!</text>
+    </svg>`,
+
+    4:`<svg viewBox="0 0 420 160">
+      <rect x="20" y="110" width="380" height="45" rx="2" fill="#8B7355"><animate attributeName="fill" values="#8B7355;#8B7355;#5a3a20;#5a3a20;#8B7355" dur="8s" repeatCount="indefinite"/></rect>
+      <path d="M60,120 L65,135 L55,145" stroke="#6B5335" stroke-width="1" fill="none"><animate attributeName="opacity" values="1;1;0;0;1" dur="8s" repeatCount="indefinite"/></path>
+      <path d="M150,115 L155,130" stroke="#6B5335" stroke-width="1" fill="none"><animate attributeName="opacity" values="1;1;0;0;1" dur="8s" repeatCount="indefinite"/></path>
+      <rect x="40" y="100" width="8" height="40" fill="#666" stroke="#888" stroke-width="0.5"/>
+      <rect x="55" y="100" width="8" height="40" fill="#666" stroke="#888" stroke-width="0.5"/>
+      <text x="52" y="95" text-anchor="middle" fill="#44ff88" font-family="'Courier Prime',monospace" font-size="7">SENT.</text>
+      <rect x="20" y="20" width="60" height="12" rx="2" fill="none" stroke="#666" stroke-width="1"/>
+      <rect x="21" y="21" height="10" rx="1" fill="#ff4444"><animate attributeName="width" values="15;15;55;55;15" dur="8s" repeatCount="indefinite"/><animate attributeName="fill" values="#ff4444;#ff4444;#00cc44;#00cc44;#ff4444" dur="8s" repeatCount="indefinite"/></rect>
+      <text x="50" y="18" text-anchor="middle" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="7">HEZETASUNA</text>
+      <rect x="170" y="55" width="45" height="30" rx="4" fill="#1a1a3a" stroke="#4499ff" stroke-width="1.5"/>
+      <text x="192" y="74" text-anchor="middle" fill="#4499ff" font-family="'Courier Prime',monospace" font-size="7" font-weight="bold">PONPA</text>
+      <path d="M215,70 L280,70 L280,108" stroke="#4499ff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <circle cx="270" r="3" fill="#4499ff" opacity="0"><animate attributeName="cy" values="108;140" dur="0.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;.8;0;0" dur="8s" repeatCount="indefinite"/></circle>
+      <circle cx="280" r="3" fill="#4499ff" opacity="0"><animate attributeName="cy" values="108;145" dur="0.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;.8;0;0" dur="8s" repeatCount="indefinite"/></circle>
+      <circle cx="290" r="3" fill="#4499ff" opacity="0"><animate attributeName="cy" values="108;138" dur="0.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;.8;0;0" dur="8s" repeatCount="indefinite"/></circle>
+      <line x1="330" y1="110" x2="330" y2="60" stroke="#228B22" stroke-width="3"/>
+      <ellipse cx="318" cy="55" rx="12" ry="8" fill="#228B22" transform="rotate(-30,318,55)"><animate attributeName="ry" values="6;8;8;8;6" dur="8s" repeatCount="indefinite"/></ellipse>
+      <ellipse cx="342" cy="50" rx="12" ry="8" fill="#228B22" transform="rotate(30,342,50)"><animate attributeName="ry" values="6;8;8;8;6" dur="8s" repeatCount="indefinite"/></ellipse>
+      <ellipse cx="330" cy="42" rx="10" ry="7" fill="#228B22"><animate attributeName="ry" values="5;7;7;7;5" dur="8s" repeatCount="indefinite"/></ellipse>
+      <circle cx="330" cy="35" r="5" fill="#ff6688"><animate attributeName="r" values="3;5;5;5;3" dur="8s" repeatCount="indefinite"/><animate attributeName="fill" values="#cc4466;#ff6688;#ff6688;#ff6688;#cc4466" dur="8s" repeatCount="indefinite"/></circle>
+      <rect x="130" y="62" width="30" height="16" rx="2" fill="#1a0a0a" stroke="#ff4444" stroke-width="1"><animate attributeName="stroke" values="#ff4444;#ff4444;#00ff00;#00ff00;#ff4444" dur="8s" repeatCount="indefinite"/></rect>
+      <text x="145" y="73" text-anchor="middle" fill="#ff8844" font-family="'Courier Prime',monospace" font-size="6">RELE</text>
+      <text x="192" y="48" text-anchor="middle" fill="#ff4444" font-family="'Courier Prime',monospace" font-size="9" font-weight="bold"><animate attributeName="opacity" values="1;1;0;0;1" dur="8s" repeatCount="indefinite"/>LEHORRA!</text>
+      <text x="192" y="48" text-anchor="middle" fill="#00ff88" font-family="'Courier Prime',monospace" font-size="9" font-weight="bold" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" dur="8s" repeatCount="indefinite"/>UREZTATZEA...</text>
+    </svg>`,
+
+    5:`<svg viewBox="0 0 420 160">
+      <circle cx="210" cy="75" r="60" opacity=".15"><animate attributeName="fill" values="#ff0000;#ffff00;#00ff00;#00ffff;#0000ff;#ff00ff;#ff0000" dur="6s" repeatCount="indefinite"/></circle>
+      <circle cx="210" cy="75" r="40" opacity=".2"><animate attributeName="fill" values="#ff0000;#ffff00;#00ff00;#00ffff;#0000ff;#ff00ff;#ff0000" dur="6s" repeatCount="indefinite"/></circle>
+      <ellipse cx="210" cy="70" rx="22" ry="25" opacity=".9"><animate attributeName="fill" values="#ff0000;#ffff00;#00ff00;#00ffff;#0000ff;#ff00ff;#ff0000" dur="6s" repeatCount="indefinite"/></ellipse>
+      <rect x="200" y="93" width="20" height="10" fill="#888" rx="1"/>
+      <rect x="203" y="103" width="14" height="4" fill="#666" rx="1"/>
+      <text x="45" y="30" fill="#ff4444" font-family="'Courier Prime',monospace" font-size="9" font-weight="bold">R</text>
+      <rect x="55" y="23" width="80" height="6" rx="3" fill="#331111" stroke="#ff4444" stroke-width="0.5"/>
+      <rect x="55" y="24" height="4" rx="2" fill="#ff4444"><animate attributeName="width" values="75;10;10;10;75;75;75" dur="6s" repeatCount="indefinite"/></rect>
+      <text x="45" y="42" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="7">POT A0</text>
+      <text x="45" y="65" fill="#44ff44" font-family="'Courier Prime',monospace" font-size="9" font-weight="bold">G</text>
+      <rect x="55" y="58" width="80" height="6" rx="3" fill="#113311" stroke="#44ff44" stroke-width="0.5"/>
+      <rect x="55" y="59" height="4" rx="2" fill="#44ff44"><animate attributeName="width" values="10;75;75;10;10;10;10" dur="6s" repeatCount="indefinite"/></rect>
+      <text x="45" y="77" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="7">POT A1</text>
+      <text x="45" y="100" fill="#4488ff" font-family="'Courier Prime',monospace" font-size="9" font-weight="bold">B</text>
+      <rect x="55" y="93" width="80" height="6" rx="3" fill="#111133" stroke="#4488ff" stroke-width="0.5"/>
+      <rect x="55" y="94" height="4" rx="2" fill="#4488ff"><animate attributeName="width" values="10;10;10;75;75;75;10" dur="6s" repeatCount="indefinite"/></rect>
+      <text x="45" y="112" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="7">POT A2</text>
+      <rect x="300" y="25" width="100" height="55" rx="4" fill="#0a1a2a" stroke="#444" stroke-width="1"/>
+      <text x="350" y="42" text-anchor="middle" fill="#ff4444" font-family="'Courier Prime',monospace" font-size="9">R: <tspan fill="#ff8888">255</tspan><animate attributeName="opacity" values="1;0;0;0;1;1;1" dur="6s" repeatCount="indefinite"/></text>
+      <text x="350" y="42" text-anchor="middle" fill="#ff4444" font-family="'Courier Prime',monospace" font-size="9" opacity="0">R: <tspan fill="#ff8888">0</tspan><animate attributeName="opacity" values="0;1;1;1;0;0;0" dur="6s" repeatCount="indefinite"/></text>
+      <text x="350" y="56" text-anchor="middle" fill="#44ff44" font-family="'Courier Prime',monospace" font-size="9">G: <tspan fill="#88ff88">0</tspan><animate attributeName="opacity" values="1;0;0;0;0;0;1" dur="6s" repeatCount="indefinite"/></text>
+      <text x="350" y="56" text-anchor="middle" fill="#44ff44" font-family="'Courier Prime',monospace" font-size="9" opacity="0">G: <tspan fill="#88ff88">255</tspan><animate attributeName="opacity" values="0;1;1;1;0;0;0" dur="6s" repeatCount="indefinite"/></text>
+      <text x="350" y="70" text-anchor="middle" fill="#4488ff" font-family="'Courier Prime',monospace" font-size="9">B: <tspan fill="#88bbff">0</tspan><animate attributeName="opacity" values="1;1;1;0;0;0;1" dur="6s" repeatCount="indefinite"/></text>
+      <text x="350" y="70" text-anchor="middle" fill="#4488ff" font-family="'Courier Prime',monospace" font-size="9" opacity="0">B: <tspan fill="#88bbff">255</tspan><animate attributeName="opacity" values="0;0;0;1;1;1;0" dur="6s" repeatCount="indefinite"/></text>
+      <text x="350" y="100" text-anchor="middle" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="8">PWM 0-255</text>
+      <text x="210" y="125" text-anchor="middle" fill="#e2e8f0" font-family="'Courier Prime',monospace" font-size="9" font-weight="bold">RGB LED</text>
+      <text x="210" y="140" text-anchor="middle" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="8">Potentziometroekin kontrolatuta</text>
+    </svg>`,
+
+    6:`<svg viewBox="0 0 420 160">
+      <ellipse cx="70" cy="130" rx="15" ry="6" fill="#ff4400" opacity=".5"><animate attributeName="rx" values="12;18;12" dur="0.5s" repeatCount="indefinite"/></ellipse>
+      <ellipse cx="70" cy="120" rx="8" ry="15" fill="#ff6600"><animate attributeName="ry" values="12;18;12" dur="0.4s" repeatCount="indefinite"/></ellipse>
+      <ellipse cx="70" cy="115" rx="5" ry="10" fill="#ffcc00"><animate attributeName="ry" values="8;12;8" dur="0.3s" repeatCount="indefinite"/></ellipse>
+      <circle cx="65" cy="95" r="4" fill="#888" opacity="0"><animate attributeName="cy" values="95;35" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values=".6;0" dur="3s" repeatCount="indefinite"/><animate attributeName="r" values="4;10" dur="3s" repeatCount="indefinite"/></circle>
+      <circle cx="75" cy="90" r="3" fill="#999" opacity="0"><animate attributeName="cy" values="90;25" dur="3.5s" repeatCount="indefinite" begin="0.5s"/><animate attributeName="opacity" values=".5;0" dur="3.5s" repeatCount="indefinite" begin="0.5s"/><animate attributeName="r" values="3;8" dur="3.5s" repeatCount="indefinite" begin="0.5s"/></circle>
+      <circle cx="60" cy="92" r="3" fill="#777" opacity="0"><animate attributeName="cy" values="92;30" dur="4s" repeatCount="indefinite" begin="1s"/><animate attributeName="opacity" values=".4;0" dur="4s" repeatCount="indefinite" begin="1s"/><animate attributeName="r" values="3;9" dur="4s" repeatCount="indefinite" begin="1s"/></circle>
+      <text x="70" y="152" text-anchor="middle" fill="#ff6600" font-family="'Courier Prime',monospace" font-size="7">KEA / SUA</text>
+      <rect x="145" y="70" width="50" height="50" rx="4" fill="#2a1a0a" stroke="#ff8844" stroke-width="1.5"/>
+      <text x="170" y="92" text-anchor="middle" fill="#ff8844" font-family="'Courier Prime',monospace" font-size="9" font-weight="bold">MQ-2</text>
+      <text x="170" y="108" text-anchor="middle" fill="#ffcc88" font-family="'Courier Prime',monospace" font-size="7">Ke Sent.</text>
+      <path d="M95,85 Q120,80 145,90" stroke="#888" stroke-width="1" stroke-dasharray="3,2" fill="none"><animate attributeName="stroke-dashoffset" values="0;-10" dur="1s" repeatCount="indefinite"/></path>
+      <rect x="145" y="50" width="50" height="8" rx="2" fill="none" stroke="#666" stroke-width="0.5"/>
+      <rect x="146" y="51" height="6" rx="1" fill="#44ff44"><animate attributeName="width" values="10;10;45;45;10;10" dur="8s" repeatCount="indefinite"/><animate attributeName="fill" values="#44ff44;#44ff44;#ff4444;#ff4444;#44ff44;#44ff44" dur="8s" repeatCount="indefinite"/></rect>
+      <text x="170" y="47" text-anchor="middle" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="7">Ke maila</text>
+      <line x1="200" y1="95" x2="250" y2="95" stroke="#ffcc44" stroke-width="1.5" stroke-dasharray="4,3"><animate attributeName="stroke-dashoffset" values="0;-14" dur="1s" repeatCount="indefinite"/></line>
+      <circle cx="290" cy="50" r="10" fill="#330000"><animate attributeName="fill" values="#330000;#330000;#ff0000;#ff0000;#330000;#330000" dur="8s" repeatCount="indefinite"/></circle>
+      <circle cx="290" cy="50" r="16" fill="none" stroke="#ff0000" opacity="0"><animate attributeName="opacity" values="0;0;.5;.5;0;0" dur="8s" repeatCount="indefinite"/></circle>
+      <circle cx="330" cy="50" r="10" fill="#330000"><animate attributeName="fill" values="#330000;#330000;#ff0000;#ff0000;#330000;#330000" dur="8s" repeatCount="indefinite"/></circle>
+      <text x="310" y="40" text-anchor="middle" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="7">LED × 2</text>
+      <rect x="275" y="80" width="50" height="25" rx="4" fill="#2a2a0a" stroke="#ffcc44" stroke-width="1"/>
+      <text x="300" y="96" text-anchor="middle" fill="#ffcc44" font-family="'Courier Prime',monospace" font-size="7" font-weight="bold">BUZZER</text>
+      <circle cx="335" cy="92" fill="none" stroke="#ff4444" stroke-width="1" opacity="0"><animate attributeName="r" values="3;18" dur="0.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;.5;0;0;0" dur="8s" repeatCount="indefinite"/></circle>
+      <rect x="270" y="115" width="100" height="35" rx="3" fill="#0a1a3a" stroke="#4499ff" stroke-width="1"/>
+      <text x="320" y="130" text-anchor="middle" fill="#00ccff" font-family="'Courier Prime',monospace" font-size="8"><animate attributeName="opacity" values="1;1;0;0;1;1" dur="8s" repeatCount="indefinite"/>Airea: Garbia</text>
+      <text x="320" y="130" text-anchor="middle" fill="#ff4444" font-family="'Courier Prime',monospace" font-size="8" font-weight="bold" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" dur="8s" repeatCount="indefinite"/>⚠ ALARMA: KEA!</text>
+      <text x="320" y="143" text-anchor="middle" fill="#00ccff" font-family="'Courier Prime',monospace" font-size="7"><animate attributeName="opacity" values="1;1;0;0;1;1" dur="8s" repeatCount="indefinite"/>Maila: 280</text>
+      <text x="320" y="143" text-anchor="middle" fill="#ff8844" font-family="'Courier Prime',monospace" font-size="7" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" dur="8s" repeatCount="indefinite"/>Maila: 720</text>
+    </svg>`,
+
+    7:`<svg viewBox="0 0 420 160">
+      <rect x="40" y="30" width="14" height="80" rx="7" fill="none" stroke="#ccc" stroke-width="1.5"/>
+      <circle cx="47" cy="115" r="10" fill="#ff4444"/>
+      <rect x="43" y="75" width="8" rx="4" fill="#ff4444"><animate attributeName="y" values="85;45;85" dur="8s" repeatCount="indefinite"/><animate attributeName="height" values="30;70;30" dur="8s" repeatCount="indefinite"/></rect>
+      <text x="60" y="40" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="7">35°</text>
+      <text x="60" y="70" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="7">25°</text>
+      <text x="60" y="100" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="7">15°</text>
+      <text x="47" y="140" text-anchor="middle" fill="#44ff88" font-family="'Courier Prime',monospace" font-size="7">DHT11</text>
+      <rect x="110" y="30" width="110" height="50" rx="3" fill="#0a1a3a" stroke="#4499ff" stroke-width="1"/>
+      <text x="165" y="50" text-anchor="middle" fill="#00ccff" font-family="'Courier Prime',monospace" font-size="9"><animate attributeName="opacity" values="1;0;1" dur="8s" repeatCount="indefinite"/>Tenp: 20°C</text>
+      <text x="165" y="50" text-anchor="middle" fill="#ff6666" font-family="'Courier Prime',monospace" font-size="9" opacity="0"><animate attributeName="opacity" values="0;1;0" dur="8s" repeatCount="indefinite"/>Tenp: 28°C</text>
+      <text x="165" y="68" text-anchor="middle" fill="#00ff88" font-family="'Courier Prime',monospace" font-size="9"><animate attributeName="opacity" values="1;0;1" dur="8s" repeatCount="indefinite"/>Haiz: GELDI</text>
+      <text x="165" y="68" text-anchor="middle" fill="#4499ff" font-family="'Courier Prime',monospace" font-size="9" font-weight="bold" opacity="0"><animate attributeName="opacity" values="0;1;0" dur="8s" repeatCount="indefinite"/>Haiz: AKTIBO</text>
+      <rect x="140" y="95" width="40" height="20" rx="3" fill="#1a0a0a" stroke="#ff4444" stroke-width="1"><animate attributeName="stroke" values="#ff4444;#00ff00;#ff4444" dur="8s" repeatCount="indefinite"/></rect>
+      <text x="160" y="108" text-anchor="middle" fill="#ff8844" font-family="'Courier Prime',monospace" font-size="7">RELE</text>
+      <circle cx="310" cy="75" r="45" fill="#0a1a2a" stroke="#00979d" stroke-width="2"/>
+      <circle cx="310" cy="75" r="40" fill="#0d2233" stroke="#006680" stroke-width="1"/>
+      <g>
+        <ellipse cx="310" cy="50" rx="6" ry="22" fill="#4499aa" opacity=".8"/>
+        <ellipse cx="310" cy="50" rx="6" ry="22" fill="#4499aa" opacity=".8" transform="rotate(120,310,75)"/>
+        <ellipse cx="310" cy="50" rx="6" ry="22" fill="#4499aa" opacity=".8" transform="rotate(240,310,75)"/>
+        <circle cx="310" cy="75" r="6" fill="#00979d"/>
+        <animateTransform attributeName="transform" type="rotate" from="0,310,75" to="1080,310,75" dur="3s" repeatCount="indefinite"/>
+      </g>
+      <line x1="360" y1="65" x2="395" y2="58" stroke="#66ccdd" stroke-width="1" opacity="0"><animate attributeName="opacity" values="0;.6;0" dur="8s" repeatCount="indefinite"/></line>
+      <line x1="360" y1="75" x2="400" y2="75" stroke="#66ccdd" stroke-width="1" opacity="0"><animate attributeName="opacity" values="0;.6;0" dur="8s" repeatCount="indefinite"/></line>
+      <line x1="360" y1="85" x2="395" y2="92" stroke="#66ccdd" stroke-width="1" opacity="0"><animate attributeName="opacity" values="0;.6;0" dur="8s" repeatCount="indefinite"/></line>
+      <circle cx="120" cy="140" r="6" fill="#003300"><animate attributeName="fill" values="#00ff00;#003300;#00ff00" dur="8s" repeatCount="indefinite"/></circle>
+      <text x="120" y="155" text-anchor="middle" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="7">NORMAL</text>
+      <circle cx="200" cy="140" r="6" fill="#000033"><animate attributeName="fill" values="#000033;#0088ff;#000033" dur="8s" repeatCount="indefinite"/></circle>
+      <text x="200" y="155" text-anchor="middle" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="7">AKTIBO</text>
+      <text x="310" y="135" text-anchor="middle" fill="#00979d" font-family="'Courier Prime',monospace" font-size="8" font-weight="bold">DC MOTORRA</text>
+      <text x="310" y="148" text-anchor="middle" fill="#94a3b8" font-family="'Courier Prime',monospace" font-size="7">+ Haizagailua</text>
+    </svg>`
+  };
+  return anims[id]||'';
 }
 
 function renderWiring(id){
